@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hypernews Portal. News</title>
+</head>
+<body>
+    {% if topic %}
+    <h2>Hyper news</h2>
+    <h2>{{ topic.title }}</h2>
+    <p>{{ topic.created }}</p>
+    <p>{{ topic.text }}</p>
+    <a target="_blank" href="/news/">News</a>
+    {% endif %}
+    {% if news %}
+    <h2>Hyper news</h2>
+        <form method="get">
+        <label>Find: <input type="text" name="q"></label>
+        <button type="submit">Search</button>
+        </form>
+        {% for created, topics in news.items|dictsortreversed:0 %}
+            <h4>{{ created|date:"Y-m-d" }}</h4>
+            <ul>
+                {% for topic in topics|dictsortreversed:"created" %}
+                <li><a target="_blank" href="/news/{{ topic.link }}/">{{ topic.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    <a target="_blank" href="/news/create/">Add new</a>
+    {% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hypernews Portal. Address</title>
+</head>
+<body>
+    <h2>Hyper news</h2>
+    <form method="post">{% csrf_token %}
+        <label>Title:<input type="text" size="50" name="title"></label>
+        <p>Text:</p>
+        <p><textarea rows="10" cols="50" name="text"></textarea></p>
+        <input type="submit" value="Add">
+    </form>
+    <a target="_blank" href="/news/">News</a>
+</body>
+</html>
